@@ -1,8 +1,9 @@
-#netdeploy.nvim
+# netdeploy.nvim
 
 This plugin allows for project-/folder-specific configuration(s) of FTP/SSH/... deploy targets. You can upload/download the active file with one simple command to/from a desired target.
+![image](https://github.com/ForsakenNGS/netdeploy.nvim/assets/7613262/9155ac9e-38bd-43ae-b268-a50392ac76bd)
 
-##Installation
+## Installation
 
 - Make sure you have [plenary](https://github.com/nvim-lua/plenary.nvim) installed
 
@@ -18,7 +19,7 @@ Using [packer](https://github.com/wbthomason/packer.nvim):
 use "ForsakenNGS/netdeploy.nvim"
 ```
 
-##Getting Started
+## Getting Started
 
 In order for the plugin to work, you need a `.netdeploy.lua` file in one of the active files parent directory. Usually this will be the project root, but you can define alternative deployment configurations for subdirectories as well. This file should look something like this:
 
@@ -60,7 +61,7 @@ vim.keymap.set('n', '<leader>u', netdeploy.upload, {})
 vim.keymap.set('n', '<leader>d', netdeploy.download, {})
 ```
 
-##Known limitations / TODOs
+## Known limitations / TODOs
 
 - [ ] TODO: Allow for a configurable (globally and per remote) confirmation dialog before uploading/downloading files
 - [ ] TODO: Collision detection via file timestamps/contents (prevent accidentally overwriting other peoples changes)
