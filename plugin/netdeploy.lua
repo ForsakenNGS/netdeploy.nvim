@@ -1,0 +1,1 @@
+require("netdeploy").setup()
