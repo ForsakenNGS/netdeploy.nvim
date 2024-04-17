@@ -166,12 +166,27 @@ function M.download()
 	end, "Download from ...")
 end
 
+-- Edit remote file
+function M.edit_remote()
+    M.select_target(function(remote)
+		local url = M.get_remote_url(remote)
+		if not url then
+			vim.api.nvim_err_writeln("No remote found/selected!")
+			return
+		end
+		vim.cmd({ cmd = 'e', args = { url } })
+		vim.api.nvim_echo({ {"NetDeployEditRemote to "..url} }, true, {})
+    end, "Edit on remote ...");
+end
+
 function M.setup(opts)
 	vim.api.nvim_create_user_command("NetDeployUpload", M.upload, {});
 	vim.api.nvim_create_user_command("NetDeployDownload", M.download, {});
+	vim.api.nvim_create_user_command("NetDeployEditRemote", M.edit_remote, {});
 	if opts and opts.defaultKeybinds then
-		vim.keymap.set('n', '<leader><Up>', M.upload, {})
-		vim.keymap.set('n', '<leader><Down>', M.download, {})
+		vim.keymap.set('n', '<leader>du', M.upload, {})
+		vim.keymap.set('n', '<leader>dd', M.download, {})
+        vim.keymap.set('n', '<leader>de', M.edit_remote, {})
 	end
 end
 

@@ -43,21 +43,23 @@ So if you have the earlier example in your project root and upload the file `foo
 By default you can use the follwing commands:
 - `:NetDeployUpload` to upload the currently active file
 - `:NetDeployDownload` to download the currently active file
+- `:NetDeployEditRemote` to edit the active file directly on the remote
 
 It is recommended to put your login information in a safe location (e.g. using ssh keys from `~/.ssh/` or a `~/.netrc` file), but depending on the protocol it may be possible to include it in the url as well.
 (See [netrw-nwrite](https://vimhelp.org/pi_netrw.txt.html#netrw-write))
 
 To make things easier you should enable keybinds for the up- and download commands. In order to do that create a configuration file at `~/.config/nvim/after/plugin/netdeploy.lua` with one of the following contents:
-- For the default keymaps (upload via `<leader><Up>`, download via `<leader><Down>`)
+- For the default keymaps (upload via `<leader>du`, download via `<leader>dd`, edit on remote via `<leader>de`)
 ```lua
 require("netdeploy").setup({ defaultKeybinds = true })
 ```
-- For a custom keymap (In this example upload via `<leader>u`, download via `<leader>d`)
+- For a custom keymap (In this example upload via `<leader>u`, download via `<leader>d`, edit on remote via `<leader>er`)
 ```lua
 local netdeploy = require("netdeploy")
 netdeploy.setup({})
 vim.keymap.set('n', '<leader>u', netdeploy.upload, {})
 vim.keymap.set('n', '<leader>d', netdeploy.download, {})
+vim.keymap.set('n', '<leader>er', netdeploy.edit_remote, {})
 ```
 
 ##Known limitations / TODOs
